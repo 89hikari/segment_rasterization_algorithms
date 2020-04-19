@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using ZedGraph;
 
@@ -86,6 +87,10 @@ namespace laba_1
                 cda2();
             if (brez_check.Checked)
                 braz();
+            if (braz_alt.Checked)
+                braz2();
+            if (kastl_check.Checked)
+                kastl();
 
             //// Обновляем график
             this.zedGraph.AxisChange();
@@ -189,6 +194,73 @@ namespace laba_1
             pane.CurveList.Clear();
             PointPairList list = new PointPairList();
 
+            GraphPane pane1 = zedGraph.GraphPane;
+            pane1.CurveList.Clear();
+            PointPairList list2 = new PointPairList();
+
+            x1 = Convert.ToDouble(this.par_X1.Value);
+            x2 = Convert.ToDouble(this.par_X2.Value);
+            y1 = Convert.ToDouble(this.par_Y1.Value);
+            y2 = Convert.ToDouble(this.par_Y2.Value);
+
+            double e = (2 * y2) - x2;
+            double dES = 2 * y2;
+            double dED = (2 * y2) - (2 * x2);
+            double x = x1;
+            double y = y1;
+
+            //   list.Add(x, y);
+            list2.Add(x, y);
+
+            while (x < x2)
+            {
+                list.Add(x, y);
+                if (e > 0)
+                {
+                    x++;
+                    y++;
+                    e += dED;
+                } else
+                {
+                    x++;
+                    e += dES;
+                }
+            }
+
+            //   list.Add(x, y);
+            list2.Add(x, y);
+
+            LineItem myCurve = pane.AddCurve("Брезенхем", list, Color.Pink, SymbolType.Diamond);
+            myCurve.Line.IsVisible = false;
+            myCurve.Line.Width = 2;
+            myCurve.Line.Color = Color.Black;
+            myCurve.Symbol.Fill.Color = Color.Blue;
+            myCurve.Symbol.Fill.Type = FillType.Solid;
+            myCurve.Symbol.Size = 7;
+            myCurve.Line.IsSmooth = true;
+
+            LineItem myCurve2 = pane1.AddCurve("Брезенхем", list2, Color.Pink, SymbolType.Diamond);
+            myCurve2.Line.IsVisible = true;
+            myCurve2.Line.Width = 2;
+            myCurve2.Line.Color = Color.Black;
+            myCurve2.Symbol.Fill.Color = Color.Blue;
+            myCurve2.Symbol.Fill.Type = FillType.Solid;
+            myCurve2.Symbol.Size = 7;
+            myCurve2.Line.IsSmooth = true;
+
+            zedGraph.AxisChange();
+            zedGraph.Invalidate();
+
+        }
+
+        void braz2()
+        {
+            fx.Clear();
+
+            GraphPane pane = zedGraph.GraphPane;
+            pane.CurveList.Clear();
+            PointPairList list = new PointPairList();
+
             x1 = Convert.ToDouble(this.par_X1.Value);
             x2 = Convert.ToDouble(this.par_X2.Value);
             y1 = Convert.ToDouble(this.par_Y1.Value);
@@ -208,13 +280,67 @@ namespace laba_1
                     x++;
                     y++;
                     e += dED;
-                } else
+                }
+                else
                 {
                     x++;
                     e += dES;
                 }
             }
 
+            LineItem myCurve = pane.AddCurve("Брезенхем", list, Color.Pink, SymbolType.Diamond);
+            myCurve.Line.IsVisible = false;
+            myCurve.Line.Width = 2;
+            myCurve.Line.Color = Color.Black;
+            myCurve.Symbol.Fill.Color = Color.Blue;
+            myCurve.Symbol.Fill.Type = FillType.Solid;
+            myCurve.Symbol.Size = 7;
+            myCurve.Line.IsSmooth = true;
+
+            zedGraph.AxisChange();
+            zedGraph.Invalidate();
+        }
+
+
+        void kastl()
+        {
+
+            fx.Clear();
+
+            GraphPane pane = zedGraph.GraphPane;
+            pane.CurveList.Clear();
+            PointPairList list = new PointPairList();
+
+            x1 = Convert.ToDouble(this.par_X1.Value);
+            x2 = Convert.ToDouble(this.par_X2.Value);
+            y1 = Convert.ToDouble(this.par_Y1.Value);
+            y2 = Convert.ToDouble(this.par_Y2.Value);
+
+            double y = y2;
+            double x = x2 - y2;
+            string m1 = "s";
+            string m2 = "d";
+            string tmp;
+
+            while (x != y)
+            {
+                list.Add(x, y);
+                if (x > y)
+                {
+                    x = x - y;                    
+                    tmp = new string(m2.Reverse().ToArray());
+                    m2 = m1 + tmp;
+                } else
+                {
+                    y = y - x;
+                    tmp = new string(m1.Reverse().ToArray());
+                    m1 = m2 + tmp;
+                }
+            }
+
+            string m;
+            tmp = new string(m1.Reverse().ToArray());
+            m = m2 + tmp;
             LineItem myCurve = pane.AddCurve("Брезенхем", list, Color.Pink, SymbolType.Diamond);
             myCurve.Line.IsVisible = true;
             myCurve.Line.Width = 2;
@@ -223,11 +349,12 @@ namespace laba_1
             myCurve.Symbol.Fill.Type = FillType.Solid;
             myCurve.Symbol.Size = 7;
             myCurve.Line.IsSmooth = true;
+
             zedGraph.AxisChange();
             zedGraph.Invalidate();
 
+            MessageBox.Show(m, "ねえ、ここは何か起これた！", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
 
         private void button_Clean_Click(object sender, EventArgs e)
         {

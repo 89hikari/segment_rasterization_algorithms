@@ -55,6 +55,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.brez_check = new System.Windows.Forms.CheckBox();
+            this.braz_alt = new System.Windows.Forms.CheckBox();
+            this.kastl_check = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.windowA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowC)).BeginInit();
@@ -396,12 +398,34 @@
             this.brez_check.Text = "Брезенхем (по лекции)";
             this.brez_check.UseVisualStyleBackColor = true;
             // 
+            // braz_alt
+            // 
+            this.braz_alt.AutoSize = true;
+            this.braz_alt.Location = new System.Drawing.Point(606, 205);
+            this.braz_alt.Name = "braz_alt";
+            this.braz_alt.Size = new System.Drawing.Size(102, 17);
+            this.braz_alt.TabIndex = 61;
+            this.braz_alt.Text = "Брезенхем (alt)";
+            this.braz_alt.UseVisualStyleBackColor = true;
+            // 
+            // kastl_check
+            // 
+            this.kastl_check.AutoSize = true;
+            this.kastl_check.Location = new System.Drawing.Point(606, 228);
+            this.kastl_check.Name = "kastl_check";
+            this.kastl_check.Size = new System.Drawing.Size(102, 17);
+            this.kastl_check.TabIndex = 62;
+            this.kastl_check.Text = "Кастла-Питвея";
+            this.kastl_check.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(745, 612);
+            this.Controls.Add(this.kastl_check);
+            this.Controls.Add(this.braz_alt);
             this.Controls.Add(this.brez_check);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
@@ -475,6 +499,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox brez_check;
+        private System.Windows.Forms.CheckBox braz_alt;
+        private System.Windows.Forms.CheckBox kastl_check;
     }
 }
 
