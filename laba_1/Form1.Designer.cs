@@ -57,6 +57,9 @@
             this.brez_check = new System.Windows.Forms.CheckBox();
             this.braz_alt = new System.Windows.Forms.CheckBox();
             this.kastl_check = new System.Windows.Forms.CheckBox();
+            this.coef = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.last = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.windowA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowC)).BeginInit();
@@ -65,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.par_X2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.par_Y2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.par_Y1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coef)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -266,7 +270,7 @@
             // 
             // button_UP
             // 
-            this.button_UP.Location = new System.Drawing.Point(593, 282);
+            this.button_UP.Location = new System.Drawing.Point(638, 314);
             this.button_UP.Name = "button_UP";
             this.button_UP.Size = new System.Drawing.Size(97, 23);
             this.button_UP.TabIndex = 36;
@@ -276,7 +280,7 @@
             // 
             // button_Clean
             // 
-            this.button_Clean.Location = new System.Drawing.Point(593, 311);
+            this.button_Clean.Location = new System.Drawing.Point(638, 343);
             this.button_Clean.Name = "button_Clean";
             this.button_Clean.Size = new System.Drawing.Size(97, 23);
             this.button_Clean.TabIndex = 37;
@@ -418,12 +422,57 @@
             this.kastl_check.Text = "Кастла-Питвея";
             this.kastl_check.UseVisualStyleBackColor = true;
             // 
+            // coef
+            // 
+            this.coef.Location = new System.Drawing.Point(668, 432);
+            this.coef.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.coef.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.coef.Name = "coef";
+            this.coef.Size = new System.Drawing.Size(40, 20);
+            this.coef.TabIndex = 63;
+            this.coef.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(588, 413);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(194, 16);
+            this.label11.TabIndex = 64;
+            this.label11.Text = "Масштабный коэффиициент";
+            // 
+            // last
+            // 
+            this.last.AutoSize = true;
+            this.last.Location = new System.Drawing.Point(606, 251);
+            this.last.Name = "last";
+            this.last.Size = new System.Drawing.Size(82, 17);
+            this.last.TabIndex = 65;
+            this.last.Text = "Последний";
+            this.last.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(745, 612);
+            this.ClientSize = new System.Drawing.Size(778, 612);
+            this.Controls.Add(this.last);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.coef);
             this.Controls.Add(this.kastl_check);
             this.Controls.Add(this.braz_alt);
             this.Controls.Add(this.brez_check);
@@ -465,6 +514,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.par_X2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.par_Y2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.par_Y1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coef)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -501,6 +551,9 @@
         private System.Windows.Forms.CheckBox brez_check;
         private System.Windows.Forms.CheckBox braz_alt;
         private System.Windows.Forms.CheckBox kastl_check;
+        private System.Windows.Forms.NumericUpDown coef;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox last;
     }
 }
 

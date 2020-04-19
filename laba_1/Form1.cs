@@ -10,7 +10,7 @@ namespace laba_1
     {
         double A = -10, B = 10, C = -10, D = 10;
 
-        double x1, x2, y1, y2;
+        double x1, x2, y1, y2, c;
 
         PointPairList listABCD = new PointPairList();//[A,B]x[C,D]
         PointPairList fx = new PointPairList();//f(x) 
@@ -91,6 +91,8 @@ namespace laba_1
                 braz2();
             if (kastl_check.Checked)
                 kastl();
+            if (last.Checked)
+                last_one();
 
             //// Обновляем график
             this.zedGraph.AxisChange();
@@ -301,7 +303,6 @@ namespace laba_1
             zedGraph.Invalidate();
         }
 
-
         void kastl()
         {
 
@@ -354,6 +355,62 @@ namespace laba_1
             zedGraph.Invalidate();
 
             MessageBox.Show(m, "ねえ、ここは何か起これた！", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        void last_one()
+        {
+            fx.Clear();
+
+            GraphPane pane = zedGraph.GraphPane;
+            pane.CurveList.Clear();
+            PointPairList list = new PointPairList();
+
+            x1 = Convert.ToDouble(this.par_X1.Value);
+            x2 = Convert.ToDouble(this.par_X2.Value);
+            y1 = Convert.ToDouble(this.par_Y1.Value);
+            y2 = Convert.ToDouble(this.par_Y2.Value);
+            c = Convert.ToDouble(this.coef.Value);
+
+            double dH = c / (x2 - x1);
+            double dU = c / (y2 - y1);
+
+            double h = dH * (1 - x1);
+            double u = dU * (1 - y1);
+            double x = x1;
+            double y = y1;
+
+            while ((h < c) && (u < c))
+            {
+                list.Add(x, y);
+                if (h < u)
+                {
+                    x++;
+                    h += dH;
+                } else if (h > u){
+                    y++;
+                    u += dU;
+                }
+                else
+                {
+                    h = u;
+                    list.Add(x, y+1);
+                    x++;
+                    y++;
+                    h += dH;
+                    u += dU;
+                }
+            }
+
+            LineItem myCurve = pane.AddCurve("Последний", list, Color.Blue, SymbolType.Diamond);
+            myCurve.Line.IsVisible = false;
+            myCurve.Line.Width = 2;
+            myCurve.Line.Color = Color.Red;
+            myCurve.Symbol.Fill.Color = Color.Blue;
+            myCurve.Symbol.Fill.Type = FillType.Solid;
+            myCurve.Symbol.Size = 7;
+            myCurve.Line.IsSmooth = true;
+            zedGraph.AxisChange();
+            zedGraph.Invalidate();
         }
 
         private void button_Clean_Click(object sender, EventArgs e)
