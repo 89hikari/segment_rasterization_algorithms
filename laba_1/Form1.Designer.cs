@@ -54,6 +54,7 @@
             this.par_Y1 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.brez_check = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.windowA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowC)).BeginInit();
@@ -385,12 +386,23 @@
             this.label9.TabIndex = 59;
             this.label9.Text = "Y2";
             // 
+            // brez_check
+            // 
+            this.brez_check.AutoSize = true;
+            this.brez_check.Location = new System.Drawing.Point(606, 182);
+            this.brez_check.Name = "brez_check";
+            this.brez_check.Size = new System.Drawing.Size(142, 17);
+            this.brez_check.TabIndex = 60;
+            this.brez_check.Text = "Брезенхем (по лекции)";
+            this.brez_check.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(716, 612);
+            this.ClientSize = new System.Drawing.Size(745, 612);
+            this.Controls.Add(this.brez_check);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.par_Y1);
@@ -462,6 +474,7 @@
         private System.Windows.Forms.NumericUpDown par_Y1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox brez_check;
     }
 }
 

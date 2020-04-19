@@ -84,6 +84,8 @@ namespace laba_1
                 cda();
             if (check_CDA2.Checked)
                 cda2();
+            if (brez_check.Checked)
+                braz();
 
             //// Обновляем график
             this.zedGraph.AxisChange();
@@ -168,8 +170,8 @@ namespace laba_1
 
             LineItem myCurve = pane.AddCurve("ЦДА по лекции", list, Color.Blue, SymbolType.Diamond);
             myCurve.Line.IsVisible = true;
-            myCurve.Line.Width = 2;//толщина линии
-            myCurve.Line.Color = Color.Red;//толщина линии
+            myCurve.Line.Width = 2;
+            myCurve.Line.Color = Color.Red;
             myCurve.Symbol.Fill.Color = Color.Blue;
             myCurve.Symbol.Fill.Type = FillType.Solid;
             myCurve.Symbol.Size = 7;
@@ -195,10 +197,34 @@ namespace laba_1
             double e = (2 * y2) - x2;
             double dES = 2 * y2;
             double dED = (2 * y2) - (2 * x2);
+            double x = x1;
+            double y = y1;
 
+            while (x < x2)
+            {
+                list.Add(x, y);
+                if (e > 0)
+                {
+                    x++;
+                    y++;
+                    e += dED;
+                } else
+                {
+                    x++;
+                    e += dES;
+                }
+            }
 
-
-
+            LineItem myCurve = pane.AddCurve("Брезенхем", list, Color.Pink, SymbolType.Diamond);
+            myCurve.Line.IsVisible = true;
+            myCurve.Line.Width = 2;
+            myCurve.Line.Color = Color.Black;
+            myCurve.Symbol.Fill.Color = Color.Blue;
+            myCurve.Symbol.Fill.Type = FillType.Solid;
+            myCurve.Symbol.Size = 7;
+            myCurve.Line.IsSmooth = true;
+            zedGraph.AxisChange();
+            zedGraph.Invalidate();
 
         }
 
