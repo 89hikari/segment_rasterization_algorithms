@@ -55,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.brez_check = new System.Windows.Forms.CheckBox();
-            this.braz_alt = new System.Windows.Forms.CheckBox();
             this.kastl_check = new System.Windows.Forms.CheckBox();
             this.coef = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -199,11 +198,6 @@
             this.par_X1.Name = "par_X1";
             this.par_X1.Size = new System.Drawing.Size(40, 20);
             this.par_X1.TabIndex = 13;
-            this.par_X1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // par_X2
             // 
@@ -366,11 +360,6 @@
             this.par_Y1.Name = "par_Y1";
             this.par_Y1.Size = new System.Drawing.Size(40, 20);
             this.par_Y1.TabIndex = 57;
-            this.par_Y1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label6
             // 
@@ -397,25 +386,15 @@
             this.brez_check.AutoSize = true;
             this.brez_check.Location = new System.Drawing.Point(606, 182);
             this.brez_check.Name = "brez_check";
-            this.brez_check.Size = new System.Drawing.Size(142, 17);
+            this.brez_check.Size = new System.Drawing.Size(82, 17);
             this.brez_check.TabIndex = 60;
-            this.brez_check.Text = "Брезенхем (по лекции)";
+            this.brez_check.Text = "Брезенхем";
             this.brez_check.UseVisualStyleBackColor = true;
-            // 
-            // braz_alt
-            // 
-            this.braz_alt.AutoSize = true;
-            this.braz_alt.Location = new System.Drawing.Point(606, 205);
-            this.braz_alt.Name = "braz_alt";
-            this.braz_alt.Size = new System.Drawing.Size(102, 17);
-            this.braz_alt.TabIndex = 61;
-            this.braz_alt.Text = "Брезенхем (alt)";
-            this.braz_alt.UseVisualStyleBackColor = true;
             // 
             // kastl_check
             // 
             this.kastl_check.AutoSize = true;
-            this.kastl_check.Location = new System.Drawing.Point(606, 228);
+            this.kastl_check.Location = new System.Drawing.Point(606, 205);
             this.kastl_check.Name = "kastl_check";
             this.kastl_check.Size = new System.Drawing.Size(102, 17);
             this.kastl_check.TabIndex = 62;
@@ -457,7 +436,7 @@
             // last
             // 
             this.last.AutoSize = true;
-            this.last.Location = new System.Drawing.Point(606, 251);
+            this.last.Location = new System.Drawing.Point(606, 228);
             this.last.Name = "last";
             this.last.Size = new System.Drawing.Size(82, 17);
             this.last.TabIndex = 65;
@@ -469,12 +448,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(778, 612);
+            this.ClientSize = new System.Drawing.Size(781, 612);
             this.Controls.Add(this.last);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.coef);
             this.Controls.Add(this.kastl_check);
-            this.Controls.Add(this.braz_alt);
             this.Controls.Add(this.brez_check);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
@@ -549,7 +527,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox brez_check;
-        private System.Windows.Forms.CheckBox braz_alt;
         private System.Windows.Forms.CheckBox kastl_check;
         private System.Windows.Forms.NumericUpDown coef;
         private System.Windows.Forms.Label label11;
