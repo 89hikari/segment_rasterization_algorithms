@@ -10,7 +10,7 @@ namespace laba_1
     {
         double A = -10, B = 10, C = -10, D = 10;
 
-        double x1, x2, y1, y2, c;
+        double x1, x2, y1, y2, c, r;
 
         PointPairList listABCD = new PointPairList();//[A,B]x[C,D]
         PointPairList fx = new PointPairList();//f(x) 
@@ -91,6 +91,8 @@ namespace laba_1
                 kastl();
             if (last.Checked)
                 last_one();
+            if (check_circ.Checked)
+                circle();
 
             //// Обновляем график
             this.zedGraph.AxisChange();
@@ -135,6 +137,11 @@ namespace laba_1
             //  LineItem krivaya_fx = this.zedGraph.GraphPane.AddCurve("f(x)", fx, Color.Blue, SymbolType.None);//рисуем функцию
             // krivaya_fx.Line.IsSmooth = true;//сглаживание графика
             //  krivaya_fx.Line.Width = 2;// толщина линии
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
 
         void cda2()
@@ -206,33 +213,37 @@ namespace laba_1
             x2 = Convert.ToDouble(this.par_X2.Value);
             y1 = Convert.ToDouble(this.par_Y1.Value);
             y2 = Convert.ToDouble(this.par_Y2.Value);
-
-            double e = (2 * y2) - x2;
-            double dES = 2 * y2;
-            double dED = (2 * y2) - (2 * x2);
             double x = x1;
             double y = y1;
 
-            //   list.Add(x, y);
-            list2.Add(x, y);
+            double deltaX = Math.Abs(x2 - x1);
+            double deltaY = Math.Abs(y2 - y1);
 
-            while (x < x2)
+            double signX = x1 < x2 ? 1 : -1;
+            double signY = y1 < y2 ? 1 : -1;
+
+            double error = deltaX - deltaY;
+
+            list.Add(x, y);
+
+            while (x != x2 || y != y2)
             {
                 list.Add(x, y);
-                if (e > 0)
+                double error2 = error * 2;
+                if (error2 > -deltaY)
                 {
-                    x++;
-                    y++;
-                    e += dED;
-                } else
+                    error -= deltaY;
+                    x += signX;
+                }
+                if (error2 < deltaX)
                 {
-                    x++;
-                    e += dES;
+                    error += deltaX;
+                    y += signY;
                 }
             }
 
             //   list.Add(x, y);
-            list2.Add(x, y);
+            list.Add(x, y);
 
             LineItem myCurve = pane.AddCurve("Брезенхем", list, Color.Pink, SymbolType.Diamond);
             myCurve.Line.IsVisible = false;
@@ -366,6 +377,67 @@ namespace laba_1
             myCurve.Line.IsSmooth = true;
             zedGraph.AxisChange();
             zedGraph.Invalidate();
+        }
+
+        void circle()
+        {
+
+            fx.Clear();
+
+            GraphPane pane = zedGraph.GraphPane;
+            pane.CurveList.Clear();
+            PointPairList list = new PointPairList();
+
+
+            x1 = Convert.ToDouble(this.par_X1.Value);
+            r = Convert.ToDouble(this.rad.Value);
+            y1 = Convert.ToDouble(this.par_Y1.Value);
+
+            double x = -r; 
+            double y = 0;
+            double f = 1 - r;
+            double fs = 3;
+            double fd = 5 - (2 * r);
+
+            while (x + y < 0)
+            {
+                list.Add(x + x1, y + y1);
+                list.Add(y + x1, x + y1);
+                list.Add(-x + x1, y + y1);
+                list.Add(-y + x1, x + y1);
+                list.Add(-x + x1, -y + y1);
+                list.Add(-y + x1, -x + y1);
+                list.Add(x + x1, -y + y1);
+                list.Add(y + x1, -x + y1);
+                if (f > 0)
+                {
+                    // d: Диагональное смещение
+                    f += fd;
+                    x++; y++;
+                    fs += 2;
+                    fd += 4;
+                }
+                else
+                {
+                    // s: Вертикальное смещение
+                    f += fs;
+                    y++;
+                    fs += 2;
+                    fd += 2;
+                }
+            }
+            LineItem myCurve = pane.AddCurve("", list, Color.Pink, SymbolType.Diamond);
+            myCurve.Line.IsVisible = false;
+            myCurve.Line.Width = 2;
+            myCurve.Line.Color = Color.Black;
+            myCurve.Symbol.Fill.Color = Color.Blue;
+            myCurve.Symbol.Fill.Type = FillType.Solid;
+            myCurve.Symbol.Size = 7;
+            myCurve.Line.IsSmooth = true;
+
+            zedGraph.AxisChange();
+            zedGraph.Invalidate();
+
         }
 
         private void button_Clean_Click(object sender, EventArgs e)

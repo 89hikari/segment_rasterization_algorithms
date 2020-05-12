@@ -59,6 +59,9 @@
             this.coef = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.last = new System.Windows.Forms.CheckBox();
+            this.check_circ = new System.Windows.Forms.CheckBox();
+            this.rad = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.windowA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowC)).BeginInit();
@@ -68,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.par_Y2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.par_Y1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coef)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rad)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -443,12 +447,53 @@
             this.last.Text = "Последний";
             this.last.UseVisualStyleBackColor = true;
             // 
+            // check_circ
+            // 
+            this.check_circ.AutoSize = true;
+            this.check_circ.Location = new System.Drawing.Point(606, 251);
+            this.check_circ.Name = "check_circ";
+            this.check_circ.Size = new System.Drawing.Size(127, 17);
+            this.check_circ.TabIndex = 66;
+            this.check_circ.Text = "Окружн. Бразенхем";
+            this.check_circ.UseVisualStyleBackColor = true;
+            // 
+            // rad
+            // 
+            this.rad.Location = new System.Drawing.Point(504, 33);
+            this.rad.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.rad.Name = "rad";
+            this.rad.Size = new System.Drawing.Size(40, 20);
+            this.rad.TabIndex = 67;
+            this.rad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(464, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 16);
+            this.label12.TabIndex = 68;
+            this.label12.Text = "Rad";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(781, 612);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.rad);
+            this.Controls.Add(this.check_circ);
             this.Controls.Add(this.last);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.coef);
@@ -493,6 +538,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.par_Y2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.par_Y1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coef)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -531,6 +577,9 @@
         private System.Windows.Forms.NumericUpDown coef;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox last;
+        private System.Windows.Forms.CheckBox check_circ;
+        private System.Windows.Forms.NumericUpDown rad;
+        private System.Windows.Forms.Label label12;
     }
 }
 
